@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using UnityEngine;
 
 namespace DaePark.Modeller
 {
@@ -31,7 +32,7 @@ namespace DaePark.Modeller
             Z2 = z2;
         }
 
-        public bool İçeriyor(float x, float z) => X1 <= x && x < X2
-                                               && Z1 <= z && z < Z2;
+        public bool İçeriyor(Vector3 konum) => X1 <= konum.x && konum.x < X2
+                                               && Z1 <= konum.z && konum.z < Z2;
     }
 }

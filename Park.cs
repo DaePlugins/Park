@@ -47,7 +47,7 @@ namespace DaePark
 		        return;
 		    }
 
-            if (Configuration.Instance.Parklar.Any(p => p.İçeriyor(araç.transform.position.x, araç.transform.position.z)))
+            if (Configuration.Instance.Parklar.Any(p => p.İçeriyor(araç.transform.position)))
 			{
 				hasarVerebilir = false;
 			}
@@ -66,7 +66,7 @@ namespace DaePark
 		        return;
 		    }
 
-            if (Configuration.Instance.Parklar.Any(p => p.İçeriyor(araç.transform.position.x, araç.transform.position.z)))
+            if (Configuration.Instance.Parklar.Any(p => p.İçeriyor(araç.transform.position)))
 			{
 				hasarVerebilir = false;
 			}

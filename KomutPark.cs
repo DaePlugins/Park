@@ -12,13 +12,19 @@ namespace DaePark
     {
         public AllowedCaller AllowedCaller => AllowedCaller.Player;
         public string Name => "park";
-        public string Help => "Parkları kontrol etmeye yarar.";
+        public string Help => "Parklar ile etkileşime geçer.";
         public string Syntax => "";
         public List<string> Aliases => new List<string>();
         public List<string> Permissions => new List<string>{ "dae.park.park" };
         
         public void Execute(IRocketPlayer komutuÇalıştıran, string[] parametreler)
         {
+            if (parametreler.Length != 2)
+            {
+                UnturnedChat.Say(komutuÇalıştıran, Park.Örnek.Translate("HatalıParametre"), Color.red);
+                return;
+            }
+
             var oyuncu = (UnturnedPlayer)komutuÇalıştıran;
 
             var parametre = parametreler[0].ToLower();
@@ -50,7 +56,7 @@ namespace DaePark
 
                 var konum = Park.Örnek.GeçiciKonumlar[parametreler[1]];
 
-                if (Park.Örnek.Configuration.Instance.Parklar.Any(p => p.İçeriyor(konum.x, konum.z)))
+                if (Park.Örnek.Configuration.Instance.Parklar.Any(p => p.İçeriyor(konum)))
                 {
                     UnturnedChat.Say(oyuncu, Park.Örnek.Translate("BurasıZatenPark"), Color.red);
                     return;
@@ -68,7 +74,7 @@ namespace DaePark
 
                 Park.Örnek.GeçiciKonumlar.Remove(parametreler[1]);
             }
-            else if (parametre == "kaldır" || parametre == "kaldir")
+            else if (parametre == "k")
             {
 				if (Park.Örnek.GeçiciKonumlar.ContainsKey(parametreler[1]))
                 {
@@ -85,6 +91,10 @@ namespace DaePark
 
                 Park.Örnek.Configuration.Instance.Parklar.Remove(silinecekPark);
                 Park.Örnek.Configuration.Save();
+            }
+            else
+            {
+                UnturnedChat.Say(komutuÇalıştıran, Park.Örnek.Translate("HatalıParametre"), Color.red);
             }
         }
     }
