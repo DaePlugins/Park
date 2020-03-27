@@ -33,6 +33,6 @@ namespace DaePark.Modeller
         }
 
         public bool İçeriyor(Vector3 konum) => X1 <= konum.x && konum.x < X2
-                                               && Z1 <= konum.z && konum.z < Z2;
+                                                             && Z1 <= konum.z && konum.z < Z2;
     }
 }

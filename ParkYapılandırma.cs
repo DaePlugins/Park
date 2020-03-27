@@ -4,17 +4,17 @@ using Rocket.API;
 
 namespace DaePark
 {
-	public class ParkYapılandırma : IRocketPluginConfiguration
-	{
-	    public string HasarVermeYetkisi { get; set; }
+    public class ParkYapılandırma : IRocketPluginConfiguration
+    {
+        public string HasarVermeYetkisi { get; set; }
 
-	    public List<ParkAlanı> Parklar { get; set; } = new List<ParkAlanı>();
+        public List<ParkAlanı> Parklar { get; set; } = new List<ParkAlanı>();
 
-		public void LoadDefaults()
-		{
-		    HasarVermeYetkisi = "HasarVerebilir";
+        public void LoadDefaults()
+        {
+            HasarVermeYetkisi = "HasarVerebilir";
 
-		    Parklar = new List<ParkAlanı>();
-		}
-	}
+            Parklar = new List<ParkAlanı>();
+        }
+    }
 }
