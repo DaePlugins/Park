@@ -28,7 +28,6 @@ namespace DaePark
             var oyuncu = (UnturnedPlayer)komutuÇalıştıran;
 
             var parametre = parametreler[0].ToLower();
-
             if (parametre == "1")
             {
                 if (Park.Örnek.Configuration.Instance.Parklar.Exists(p => p.İsim == parametreler[1]))
@@ -37,13 +36,13 @@ namespace DaePark
                     return;
                 }
 
-                if (!Park.Örnek.GeçiciKonumlar.ContainsKey(parametreler[1]))
+                if (Park.Örnek.GeçiciKonumlar.ContainsKey(parametreler[1]))
                 {
-                    Park.Örnek.GeçiciKonumlar.Add(parametreler[1], oyuncu.Position);
+                    Park.Örnek.GeçiciKonumlar[parametreler[1]] = oyuncu.Position;
                 }
                 else
                 {
-                    Park.Örnek.GeçiciKonumlar[parametreler[1]] = oyuncu.Position;
+                    Park.Örnek.GeçiciKonumlar.Add(parametreler[1], oyuncu.Position);
                 }
             }
             else if (parametre == "2")
@@ -82,7 +81,7 @@ namespace DaePark
 					return;
                 }
 
-                var silinecekPark = Park.Örnek.Configuration.Instance.Parklar.Find(p => p.İsim == parametreler[1]);
+                var silinecekPark = Park.Örnek.Configuration.Instance.Parklar.FirstOrDefault(p => p.İsim == parametreler[1]);
                 if (silinecekPark == null)
                 {
                     UnturnedChat.Say(komutuÇalıştıran, Park.Örnek.Translate("ParkBulunamadı", parametreler[1]), Color.red);
