@@ -75,10 +75,10 @@ namespace DaePark
             }
             else if (parametre == "k")
             {
-				if (Park.Örnek.GeçiciKonumlar.ContainsKey(parametreler[1]))
+                if (Park.Örnek.GeçiciKonumlar.ContainsKey(parametreler[1]))
                 {
                     Park.Örnek.GeçiciKonumlar.Remove(parametreler[1]);
-					return;
+                    return;
                 }
 
                 var silinecekPark = Park.Örnek.Configuration.Instance.Parklar.FirstOrDefault(p => p.İsim == parametreler[1]);
